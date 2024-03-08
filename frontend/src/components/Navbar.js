@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const flag = true;
+ 
   const userString = localStorage.getItem("user");
   const userData = userString ? JSON.parse(userString) : null;
   const userEmail = userData ? userData.email : null;
@@ -14,18 +14,18 @@ const Navbar = () => {
           <h1>Dashboard</h1>
         </Link>
         <nav>
-          {flag && (
+          
             <div className="emailContainer">
               <p>{userEmail}</p>
               <button onClick={()=>{localStorage.removeItem("user");localStorage.removeItem("token");navigate("/login")}}>Log out</button>
             </div>
-          )}
-          {!flag && (
+          
+         
             <div>
               <Link to="/login">Login</Link>
               <Link to="/signup">Signup</Link>
             </div>
-          )}
+        
         </nav>
       </div>
     </header>
